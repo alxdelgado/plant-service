@@ -1,5 +1,6 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Container } from '@material-ui/core';
+
 import './App.css';
 
 function App() {
@@ -7,7 +8,7 @@ function App() {
   
   return (
     <div className="App">
-        Plant Service
+        <Container maxWidth="lg"/>
     </div>
   );
 }
