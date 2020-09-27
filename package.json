@@ -9,16 +9,17 @@
     "@testing-library/user-event": "^7.1.2",
     "css-loader": "^4.3.0",
     "file-loader": "^6.1.0",
-    "nodemon": "^2.0.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.3"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "webpack-dev-server --mode development --open",
+    "server": "nodemon index.js",
+    "webpack-dev-server": "webpack-dev-server",
+    "dev:webpack": "webpack-dev-server --mode=development",
+    "dev": "concurrently \"npm run server\" \"npm run dev:webpack\"",
+    "prod": "webpack --mode=production"
   },
   "eslintConfig": {
     "extends": "react-app"
