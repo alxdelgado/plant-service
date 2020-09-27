@@ -8,12 +8,13 @@ exports.myPickups = function(req,res){
   let collection = client.db('plants').collection('pickups');
   collection.find({'user-id':usrId}).toArray().then(result => {
     res.send(result);
-  });
+  })
+    .catch(err => console.log(err));
 }
 
 function getPickup (req,res){
   let {client} = require('./mongoConnection');
   let id = ObjectID.createFromHexString(req.query.id);
   let collection = client.db('plants').collection('pickups');
-  collection.findOne(id).then(result => {res.send(result)});
+  collection.findOne(id).then(result => {res.send(result)}).catch(err => console.log(err));
 }
