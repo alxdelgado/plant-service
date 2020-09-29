@@ -1,0 +1,10 @@
+{
+    "short_name": "Plant-Service",
+    "name": "Plant-Service",
+    "description": "plant maintenence",
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "#fff",
+    "theme_color": "#000",
+    "scope": "/"
+}

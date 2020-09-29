@@ -16,5 +16,6 @@ exports.newPickup = function(req,res) {
   timestamp: dateTime (UTC),
   address: string,
   user: string,
+  plant_count: number,
 }
 */

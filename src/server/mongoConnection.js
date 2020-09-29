@@ -1,6 +1,6 @@
 const {MongoClient,Server} = require('mongodb');
 
-var client = undefined;
+let client = undefined;
 
 exports.Initialize = function(host,port){
   console.log(`Initializing mongo at ${host} on port ${port}`);
