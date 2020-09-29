@@ -9,6 +9,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "babel-plugin-dotenv": "^0.1.1",
+    "clsx": "^1.1.1",
     "css-loader": "^4.3.0",
     "file-loader": "^6.1.0",
     "react": "^16.13.1",
