@@ -31,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
   },
   appBar: {
+    backgroundColor: '#709987',
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -46,9 +47,6 @@ const useStyles = makeStyles((theme) => ({
   },
   menuButton: {
     marginRight: theme.spacing(2),
-  },
-  hide: {
-    display: 'none',
   },
   drawer: {
     width: drawerWidth,
@@ -96,65 +94,67 @@ export default function Header() {
         setOpen(false);
     }
 
-    return (
-        <React.Suspense fallback={<div>Loading...</div>}>
-            <div className={classes.root}>
-                <CssBaseline />
-                <AppBar
-                    position="fixed"
-                    className={clsx(classes.appBar, {
-                        [classes.appBarShift]: open,
-                    })}
+  return (
+
+    <div className={classes.root}>
+        <CssBaseline />
+        <AppBar
+            position="sticky"
+            className={clsx(classes.appBar, {
+                [classes.appBarShift]: open,
+            })}
+        >
+            <Toolbar>
+                <IconButton
+                    color="inherit"
+                    aria-label="open drawer"
+                    onClick={handleDrawerOpen}
+                    edge="start"
+                    className={clsx(classes.menuButton, open && classes.hide)}
                 >
-                    <Toolbar>
-                        <IconButton
-                            color="inherit"
-                            aria-label="open drawer"
-                            onClick={handleDrawerOpen}
-                            edge="start"
-                            className={clsx(classes.menuButton, open && classes.hide)}
-                        >
-                            <MenuIcon />
-                        </IconButton>
-                        <Typography variant="h6" noWrap>
-                            Plant Service   
-                        </Typography>
-                    </Toolbar>
-                </AppBar>
-                <Drawer
-                    className={classes.drawer}
-                    variant="persistent"
-                    anchor="left"
-                    open={open}
-                    classes={{
-                        paper: classes.drawerPaper,
-                    }}
-                >
-                <div className={classes.drawerHeader}>
-                    <IconButton onClick={handleDrawerClose}>
-                        {theme.direction === 'ltr' ? <ArrowBackIosIcon /> : <ArrowForwardIosIcon />}
-                    </IconButton>
-                </div>
-                <Divider />
-                <List>
-                    {['Inbox', 'Starred'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
-                    ))}
-                </List>
-                <Divider />
-                <List>
-                    {['Schedule', 'Cancel'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>{index % 2 === 0 ? <ScheduleIcon /> : <CancelScheduleSendIcon />}</ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
-                    ))}
-                </List>
-                </Drawer>
-            </div>
-        </React.Suspense>
-    )
+                    <MenuIcon />
+                </IconButton>
+                <Typography variant="h6" noWrap>
+                    Sato   
+                </Typography>
+            </Toolbar>
+        </AppBar>
+        <Drawer
+            className={classes.drawer}
+            variant="persistent"
+            anchor="left"
+            open={open}
+            classes={{
+                paper: classes.drawerPaper,
+            }}
+        >
+        <div className={classes.drawerHeader}>
+            <IconButton onClick={handleDrawerClose}>
+                {theme.direction === 'ltr' ? <ArrowBackIosIcon /> : <ArrowForwardIosIcon />}
+            </IconButton>
+        </div>
+        <Divider />
+        <List>
+            {['Inbox', 'Starred'].map((text, index) => (
+            <ListItem button key={text}>
+                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                <ListItemText primary={text} />
+            </ListItem>
+            ))}
+        </List>
+        <Divider />
+        <List>
+            {['Schedule', 'Cancel'].map((text, index) => (
+            <ListItem button key={text}>
+                <ListItemIcon>{index % 2 === 0 ? <ScheduleIcon /> : <CancelScheduleSendIcon />}</ListItemIcon>
+                <ListItemText primary={text} />
+            </ListItem>
+            ))}
+        </List>
+        </Drawer>
+    </div>
+  )
 };
+
+
+
