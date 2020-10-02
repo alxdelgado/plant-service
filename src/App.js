@@ -5,6 +5,7 @@ import './App.css';
 
 // import components;
 const HomePage = React.lazy(() => import('./pages/HomePage/HomePage.js'));
+const Login = React.lazy(() => import('./pages/Login/Login.js'));
 const Header = React.lazy(() => import('./components/Header/Header.js'));
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Header />
         <Switch>
             <Route exact path='/' component={HomePage} />
+            <Route path='/login' component={Login} />
         </Switch>
     </Suspense>
     </>
