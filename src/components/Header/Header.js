@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import clsx from 'clsx';
+import { useHistory } from 'react-router-dom';
 
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -14,6 +15,8 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 
+import AccountBoxIcon from '@material-ui/icons/AccountBox';
+import HomeIcon from '@material-ui/icons/Home';
 import MenuIcon from '@material-ui/icons/Menu';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
@@ -47,6 +50,9 @@ const useStyles = makeStyles((theme) => ({
   },
   menuButton: {
     marginRight: theme.spacing(2),
+  },
+  loginButton: {
+    marginLeft: '25em'
   },
   drawer: {
     width: drawerWidth,
@@ -82,9 +88,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Header() {
+    const history = useHistory();
     const classes = useStyles();
     const theme = useTheme();
-    const [open, setOpen] = React.useState(false); 
+    const [open, setOpen] = React.useState(false);
+
+    const routeToLogin = useCallback(() => history.push('/login'), [history]);
+    const routeToHome = useCallback(() => history.push('/'), [history]);
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -117,6 +127,15 @@ export default function Header() {
                 <Typography variant="h6" noWrap>
                     Sato   
                 </Typography>
+                <IconButton
+                  color="inherit"
+                  aria-label="login"
+                  onClick={routeToLogin}
+                  edge="end"
+                  className={classes.loginButton}
+                >
+                  <AccountBoxIcon />
+                </IconButton> 
             </Toolbar>
         </AppBar>
         <Drawer
@@ -135,6 +154,15 @@ export default function Header() {
         </div>
         <Divider />
         <List>
+            {['Home'].map((text, index) => (
+              <ListItem button key={text} onClick={routeToHome}>
+                  <ListItemIcon>{index === 0 ? <HomeIcon /> : null }</ListItemIcon>
+                  <ListItemText style={{textDecoration: 'none'}} primary={text} />
+              </ListItem>
+            ))}
+        </List>
+        <Divider />
+        <List>
             {['Inbox', 'Starred'].map((text, index) => (
             <ListItem button key={text}>
                 <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
@@ -146,7 +174,7 @@ export default function Header() {
         <List>
             {['Schedule', 'Cancel'].map((text, index) => (
             <ListItem button key={text}>
-                <ListItemIcon>{index % 2 === 0 ? <ScheduleIcon /> : <CancelScheduleSendIcon />}</ListItemIcon>
+                <ListItemIcon>{index % 2 === 0 ? <ScheduleIcon /> : <CancelScheduleSendIcon /> }</ListItemIcon>
                 <ListItemText primary={text} />
             </ListItem>
             ))}
