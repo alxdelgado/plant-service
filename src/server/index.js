@@ -3,6 +3,8 @@ const app = express();
 const {argv} = require('yargs');
 const bodyParser = require('body-parser');
 
+// Route imports;
+const user = require("./routes/UserRoute");
 const {newPickup} = require('./newPickup');
 const {myPickups, getPickup} = require('./myPickups');
 
@@ -16,13 +18,19 @@ console.log("Initializing mongo...");
 Initialize(mongo_host,mongo_port);
 console.log("Mongo initialized.");
 
+// Middleware;
 var jsonParser = bodyParser.json();
-
 app.use(jsonParser);
 
+
+
+// Routes;
 app.get('/', myPickups);
 app.post('/new', newPickup);
+app.use("/user", user);
 
-app.listen(port,() => {
+
+// Server;
+app.listen(port, () => {
     console.log(`Running server at http://localhost:${port}`);
 });
