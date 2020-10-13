@@ -1,13 +1,11 @@
 // import dependencies 
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const path = require('path');
-const webpack = require('webpack');
-// const dotenv = require('dotenv');
 
 // create webpack export
 module.exports = {
     context: __dirname,
-    entry: './src/index.js',
+    entry: { index: path.join(__dirname, 'src/index.js') },
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'main.js',
@@ -19,17 +17,21 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.m?js$/,
                 use: 'babel-loader',
+                resolve: {
+                    fullySpecified: false
+                }
             },
             {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader'],
             },
             {
-                test: /\.(png|jpg|svg|gif|jpeg|ico)$/,
-                exclude: '/node_modules', 
-                use: ['file-loader?name=[name].[ext]']
+                test: /\.(png|jpg|svg|gif)$/,
+                use: [{
+                    loader: 'file-loader',
+                }]
             }
         ]
     },
@@ -38,8 +40,5 @@ module.exports = {
             template: path.resolve(__dirname, 'public/index.html'),
             filename: 'index.html'
         })
-    ], 
-    node: {
-        fs: "empty"
-    }
+    ]
 };
