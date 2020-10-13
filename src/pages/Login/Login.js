@@ -1,4 +1,5 @@
-import React, { useState } from 'react'; 
+import React, { useState, useCallback } from 'react';
+import { useHistory } from 'react-router-dom';
 import {
     Paper,  
     Grid, 
@@ -23,8 +24,11 @@ const useStyles = makeStyles((theme) => ({
 
 
 function Login() {
+    const history = useHistory();
+    const classes = useStyles();
 
-const classes = useStyles();
+    // TO DO: 
+        // redirect login to be successful or fail; 
 
     return (
         <Paper className={classes.padding}>

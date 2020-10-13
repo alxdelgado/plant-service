@@ -124,7 +124,7 @@ export default function Header() {
                 >
                     <MenuIcon />
                 </IconButton>
-                <Typography variant="h6" noWrap>
+                <Typography variant="h6" noWrap onClick={routeToHome}>
                     Sato   
                 </Typography>
                 <IconButton
