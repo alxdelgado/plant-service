@@ -1,4 +1,5 @@
 const express = require("express");
+const mongoose = require('mongoose');
 const { check, validationResult } = require("express-validator"); 
 const bcrypt = require('bcrypt');
 const jwt = require("jsonwebtoken"); 

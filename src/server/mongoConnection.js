@@ -12,14 +12,14 @@
 
 const MongoClient = require("mongodb").MongoClient;
 const Server = require("mongodb").MongoClient;
-const MONGOURI = "mongodb+srv://alexTest:<password>@cluster0.5uewh.mongodb.net/<dbname>?retryWrites=true&w=majority";
+const MONGOURI = "mongodb+srv://alexTest@cluster0.5uewh.mongodb.net/<dbname>?retryWrites=true&w=majority";
 
 exports.Initialize = async function(host, port) {
   console.log(`Initializing mongo at ${host} on port ${port}`);
-  const client = new MongoClient(MONGOURI, new Server(host, port));
-  client.connect(err => {
+  const client = new MongoClient(MONGOURI, { useUnifiedTopology: true }, new Server(host, port));
+  await client.connect(err => {
     // perform actions on the collection object; 
-    console.log("connected in Mongo Connection >>>>>");
+    console.log("connected in Mongo Connection >>>>>", client);
     client.close();
   })
 }

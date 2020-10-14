@@ -5,8 +5,8 @@ const bodyParser = require('body-parser');
 
 // Route imports;
 const user = require("./routes/UserRoute");
-const {newPickup} = require('./newPickup');
-const {myPickups, getPickup} = require('./myPickups');
+// const {newPickup} = require('./newPickup');
+// const {myPickups, getPickup} = require('./myPickups');
 
 const { Initialize } = require('./mongoConnection');
 
@@ -33,9 +33,9 @@ app.use(bodyParser.json());
 
 
 // Routes;
-app.get('/', myPickups);
-app.post('/new', newPickup);
-app.use("/user", user);
+// app.get('/', myPickups);
+// app.post('/new', newPickup);
+app.post("/user", user);
 
 
 // Server;
