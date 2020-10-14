@@ -1,5 +1,4 @@
-import React, { useState, useCallback } from 'react';
-import { useHistory } from 'react-router-dom';
+import React from 'react';
 import {
     Paper,  
     Grid, 
@@ -24,7 +23,6 @@ const useStyles = makeStyles((theme) => ({
 
 
 function Login() {
-    const history = useHistory();
     const classes = useStyles();
 
     // TO DO: 

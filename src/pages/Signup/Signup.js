@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid } from '@material-ui/core';
+import styled from 'styled-components';
 import { useForm, Form } from '../../components/Form/useForm';
 import Input from '../../components/Elements/Input';
 // import * as employeeService from '../../services/employeeService';
@@ -15,6 +15,14 @@ const defaultValues = {
     zipCode: "",
 }
 
+
+const SignUpGrid = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 30%; 
+    margin: 50px auto;
+    justify-content: space-between;
+`;
 
 export default function SignUpPage() {
 
@@ -56,59 +64,58 @@ export default function SignUpPage() {
 
     return (
         <Form onSubmit={handleSubmit}>
-            <Grid container>
-                <Grid item xs={6}>
-                    <Input 
-                        label="First Name"
-                        name="firstName"
-                        value={values.firstName}
-                        onChange={handleInputChange}
-                        error={errors.firstName}
-                    />
-                    <Input 
-                        label="Last Name"
-                        name="lastName"
-                        value={values.lastName}
-                        onChange={handleInputChange}
-                        error={errors.lastName}
-                    />
-                    <Input
-                        label="Email" 
-                        name="email"
-                        value={values.email}
-                        error={errors.email}
-                        onChange={handleInputChange}
-                    />
-                    <Input 
-                        label="Password"
-                        name="password"
-                        value={values.password}
-                        error={errors.password}
-                        onChange={handleInputChange}
-                    />
-                    <Input 
-                        label="City"
-                        name="city"
-                        value={values.city}
-                        error={errors.city}
-                        onChange={handleInputChange}
-                    />
-                    <Input 
-                        label="State"
-                        name="state"
-                        value={values.state}
-                        error={errors.state}
-                        onChange={handleInputChange}
-                    />
-                    <Input 
-                        label="Zipcode"
-                        name="zipCode"
-                        value={values.zipCode}
-                        error={errors.zipCode}
-                        onChange={handleInputChange}
-                    />
-                </Grid>
-            </Grid>
+            <SignUpGrid>
+                <Input
+                    vairant="filled" 
+                    label="First Name"
+                    name="firstName"
+                    value={values.firstName}
+                    onChange={handleInputChange}
+                    error={errors.firstName}
+                />
+                <Input 
+                    label="Last Name"
+                    name="lastName"
+                    value={values.lastName}
+                    onChange={handleInputChange}
+                    error={errors.lastName}
+                />
+                <Input
+                    label="Email" 
+                    name="email"
+                    value={values.email}
+                    error={errors.email}
+                    onChange={handleInputChange}
+                />
+                <Input 
+                    label="Password"
+                    name="password"
+                    value={values.password}
+                    error={errors.password}
+                    onChange={handleInputChange}
+                />
+                <Input 
+                    label="City"
+                    name="city"
+                    value={values.city}
+                    error={errors.city}
+                    onChange={handleInputChange}
+                />
+                <Input 
+                    label="State"
+                    name="state"
+                    value={values.state}
+                    error={errors.state}
+                    onChange={handleInputChange}
+                />
+                <Input 
+                    label="Zipcode"
+                    name="zipCode"
+                    value={values.zipCode}
+                    error={errors.zipCode}
+                    onChange={handleInputChange}
+                />
+            </SignUpGrid>
         </Form>
     )
 }

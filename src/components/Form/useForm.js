@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core'; 
+import React, { useState } from 'react'; 
+import styled from 'styled-components';
 
 export function useForm(defaultValues, validateOnChange = false, validate) {
 
@@ -7,7 +7,7 @@ export function useForm(defaultValues, validateOnChange = false, validate) {
     const [errors, setErrors] = useState({});
 
     const handleInputChange = e => {
-        const { name, value } = e.target
+        const { name, value } = e.target.value;
         setValues({
             ...values, 
             [name]: value
@@ -31,21 +31,16 @@ export function useForm(defaultValues, validateOnChange = false, validate) {
     }
 }
 
-const useStyles = makeStyles(theme => ({
-    root: {
-        '&.MuiFormControl-root': {
-            width: '80%',
-            margin: theme.spacing(1)
-        }
-    }
-}));
+const FormGroup = styled.div`
+    margin: 50px auto;
+`;
+
 
 export function Form(props) {
-    const classes = useStyles();
     const { children, ...other } = props;
     return (
-        <form className={classes.root} autoComplete="off" {...other}>
+        <FormGroup autoComplete="off" {...other}>
             {props.children}
-        </form>
+        </FormGroup>
     )
 }; 
