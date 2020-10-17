@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js --port 3000",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
   },
   "keywords": [
     "server"
@@ -20,6 +21,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.6.2",
     "mongoose": "^5.10.8",
+    "morgan": "^1.10.0",
     "yargs": "^16.0.3"
   }
 }

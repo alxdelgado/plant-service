@@ -73,12 +73,6 @@ export default function SignUpPage() {
         }
     }
 
-    const onSubmit = (e) => {
-        e.preventDefault()
-
-    }
-
-
     return (
         <Form onSubmit={handleSubmit}>
             <SignUpContainer>
