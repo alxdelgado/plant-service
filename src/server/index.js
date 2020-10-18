@@ -1,14 +1,15 @@
 // package imports;
 const express = require('express');
+const helmet = require("helmet");
 const { argv } = require('yargs');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
+console.log(morgan);
 
 // Route imports;
 const user = require("./routes/getUser");
 // const {newPickup} = require('./newPickup');
 // const {myPickups, getPickup} = require('./myPickups');
-
 const { Initialize } = require('./mongoConnection');
 
 
@@ -24,15 +25,14 @@ Initialize(mongo_host, mongo_port);
 console.log("Mongo is connected >>>>> ");
 
 // Middleware;
-app.use(bodyParser.json({ type: "*/*"}));
+app.use(bodyParser.json());
 app.use(morgan("combined"));
-
-
+app.use(helmet());
 
 // Routes;
 // app.get('/', myPickups);
 // app.post('/new', newPickup);
-app.post("/user", user);
+app.post("/", user);
 
 
 // Server;

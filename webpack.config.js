@@ -18,6 +18,7 @@ module.exports = {
         rules: [
             {
                 test: /\.m?js$/,
+                enforce: "pre",
                 use: 'babel-loader',
                 resolve: {
                     fullySpecified: false
@@ -25,10 +26,12 @@ module.exports = {
             },
             {
                 test: /\.css$/,
+                enforce: "pre",
                 use: ['style-loader', 'css-loader'],
             },
             {
                 test: /\.(png|jpg|svg|gif)$/,
+                 
                 use: [{
                     loader: 'file-loader',
                 }]
@@ -42,3 +45,4 @@ module.exports = {
         })
     ]
 };
+
