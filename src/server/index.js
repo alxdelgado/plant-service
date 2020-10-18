@@ -27,7 +27,14 @@ console.log("Mongo is connected >>>>> ");
 // Middleware;
 app.use(bodyParser.json());
 app.use(morgan("combined"));
-app.use(helmet());
+app.use(helmet.contentSecurityPolicy({
+    directives: {
+        defaultSrc: ["'self' 'unsafe-eval"], 
+        scriptSrc: ["'self'"], 
+        objectSrc: ["'none'"], 
+        upgradeInsecureRequests: [],
+    },
+}));
 
 // Routes;
 // app.get('/', myPickups);
@@ -37,5 +44,5 @@ app.post("/", user);
 
 // Server;
 app.listen(port, () => {
-    console.log(`Running server at http://localhost:${port}`);
+    console.log(`🌎 ===> spaceship running at PORT ${port}`);
 });
