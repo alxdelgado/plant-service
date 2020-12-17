@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const MONGOURI = "mongodb+srv://alexTest@cluster0.5uewh.mongodb.net/<dbname>?retryWrites=true&w=majority";
+const MONGOURI = "mongodb+srv://cluster0.5uewh.mongodb.net/plant_db";
 
 const InitiateMongoServer = async () => {
   try {

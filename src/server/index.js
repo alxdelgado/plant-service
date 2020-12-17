@@ -5,6 +5,8 @@ const morgan = require('morgan')
 const { argv } = require('yargs');
 const bodyParser = require('body-parser');
 
+const middlewares = require("./middlewares");
+
 // Route imports;
 const user = require("./routes/UserRoute");
 const InitiateMongoServer = require('./mongoConnection');
@@ -35,8 +37,13 @@ app.use(helmet.contentSecurityPolicy({
 
 // endpoints;
 app.get("/", (req, res) => {
-    res.json({ message: "we are live!!" });
+    res.json({
+        message: "We are live!",
+    })
 });
+
+app.use(middlewares.notFound);
+app.use(middlewares.errorHandler);
 
 /**
  * Router Middleware
@@ -44,7 +51,6 @@ app.get("/", (req, res) => {
  * Method - *
  */
 app.use("/user", user);
-
 
 
 // Server;
